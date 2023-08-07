@@ -1,0 +1,26 @@
+{
+  "name": "serverless-p2p-chat",
+  "version": "0.0.0",
+  "description": "Simple serverless, in-memory storage P2P chat client",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": " brittle test/**/*.test.js --coverage --bail"
+  },
+  "author": "Galin Kostov (dev@galin.cc)",
+  "license": "MIT",
+  "dependencies": {
+    "corestore": "^6.8.3",
+    "hyperswarm": "^4.5.1",
+    "random-access-memory": "^6.2.0",
+    "simple-peer": "^9.11.1",
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.8",
+    "brittle": "^3.3.0",
+    "standard": "^17.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
