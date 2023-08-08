@@ -36,7 +36,11 @@ module.exports = class Chat {
   }
 
   async sendMessage(message) {
-    await this.me.append(message);
+    if (message === this.getKeypressKeyword()) {
+      await this.me.append('typing...');
+    } else {
+      await this.me.append(message);
+    }
   }
 
   async closeChat() {
@@ -52,5 +56,9 @@ module.exports = class Chat {
     await userToBan.session().close();
     await userToBan.close();
     console.log(`Banned ${pubKey}`);
+  }
+
+  getKeypressKeyword() {
+    return 'user-is-typing-4a516b871f66990bd2a1fcc5a07dfcbf874b22299298ca462b9f76f62a6bc992';
   }
 }

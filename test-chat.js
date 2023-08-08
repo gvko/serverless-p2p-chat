@@ -12,9 +12,9 @@ async function main() {
   readline.question('Paste other user\'s key: ', async (pubKey) => {
     await chat.connectToPeer(pubKey);
 
-    // process.stdin.on('keypress', async () => {
-    //   await chat.sendMessage('typing...');
-    // });
+    process.stdin.on('keypress', async () => {
+      await chat.sendMessage(chat.getKeypressKeyword());
+    });
 
     readline.on('line', async (msg) => {
       if (msg.includes('ban')) {
