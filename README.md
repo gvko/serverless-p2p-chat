@@ -2,7 +2,27 @@
 
 This is a serverless p2p chat library retaining chat history in-memory.
 
-## Getting started
+## Local testing
+
+Install dependencies
+
+```
+npm i
+```
+
+There is an example usage implementation of the lib in `test-chat.js`. You can run this with:
+
+```
+node test-chat.js
+```
+
+or
+
+```
+npm start
+```
+
+## How to use the lib in your app
 
 Install lib:
 
