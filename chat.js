@@ -46,37 +46,11 @@ module.exports = class Chat {
     await this.me.close();
     await this.them.close();
   }
-}
 
-async function old() {
-  const store = new Corestore(RAM)
-  const me = store.get({name: 'me'})
-  await me.ready()
-
-  const swarm = new Hyperswarm()
-  swarm.on('connection', conn => store.replicate(conn))
-  swarm.join(me.discoveryKey)
-
-  console.log('my key', me.key.toString('hex'))
-
-  rl.question('paste their public key: ', async (pK) => {
-    let them = store.get(Buffer.from(pK, 'hex'))
-    await them.ready()
-
-    swarm.join(them.discoveryKey)
-    await swarm.flush()
-
-    them.createReadStream({live: true}).on('data', data => console.log('<', data.toString()))
-
-    console.log('Chat away!')
-    rl.on('line', async line => await me.append(line))
-
-    rl.on('close', async () => {
-      console.log('Bye!')
-      await me.session().close()
-      await them.session().close()
-      await me.close()
-      await them.close()
-    })
-  })
+  async kickOutUser(pubKey) {
+    const userToBan = this.store.get(Buffer.from(pubKey, 'hex'));
+    await userToBan.session().close();
+    await userToBan.close();
+    console.log(`Banned ${pubKey}`);
+  }
 }

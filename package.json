@@ -2,7 +2,7 @@
   "name": "serverless-p2p-chat",
   "version": "0.0.0",
   "description": "Simple serverless, in-memory storage P2P chat client",
-  "main": "index.js",
+  "main": "chat.js",
   "scripts": {
     "lint": "standard",
     "test": " brittle test/**/*.test.js --coverage --bail"

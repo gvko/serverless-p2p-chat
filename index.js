@@ -7,12 +7,21 @@ async function main() {
     output: process.stdout
   });
   const chat = new Chat();
-  const myKey = await chat.init();
+  await chat.init();
 
   readline.question('Paste other user\'s key: ', async (pubKey) => {
     await chat.connectToPeer(pubKey);
 
+    // process.stdin.on('keypress', async () => {
+    //   await chat.sendMessage('typing...');
+    // });
+
     readline.on('line', async (msg) => {
+      if (msg.includes('ban')) {
+        const userToBanPubKey = msg.split(' ')[1];
+        await chat.kickOutUser(userToBanPubKey);
+      }
+
       await chat.sendMessage(msg);
     });
 
