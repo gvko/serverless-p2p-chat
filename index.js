@@ -55,7 +55,7 @@ module.exports = class Chat {
     const userToBan = this.store.get(Buffer.from(pubKey, 'hex'));
     await userToBan.session().close();
     await userToBan.close();
-    console.log(`Banned ${pubKey}`);
+    console.log(`Removed user ${pubKey}`);
   }
 
   getKeypressKeyword() {

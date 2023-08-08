@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Simple serverless, in-memory storage P2P chat client",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gvko/serverless-p2p-chat.git"
+  },
   "scripts": {
     "lint": "standard",
     "test": " brittle test/**/*.test.js --coverage --bail"
